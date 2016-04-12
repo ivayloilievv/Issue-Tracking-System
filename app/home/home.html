@@ -1,0 +1,59 @@
+<div class="margin-bottom-100"></div>
+<div class="row">
+    <div class="col-md-4 col-md-offset-1 border">
+        <form name = "loginUserForm">
+            <label for="username">
+                Username
+            </label>
+            <input type="text" id="username" required="required" ng-model="loginUser.username" class="form-control"/>
+            <br/>
+            <label for="password">
+                Password
+            </label>
+            <input type="password" id="password" required="required" ng-model="loginUser.password" class="form-control"/>
+            <br/>
+            <button class="btn-primary" ng-click="login(loginUser)">
+                Login
+            </button>
+        </form>
+    </div>
+    <div class="col-md-4 col-md-offset-2 border">
+        <form name = "registerUserForm">
+            <label for="reg-username">
+                Username
+            </label>
+            <input type="text" id="reg-username" required="required" ng-model="registerUser.username" class="form-control"/>
+            <br/>
+            <label for="reg-password">
+                Password
+            </label>
+            <input type="password" id="reg-password" required="required" ng-model="registerUser.password" class="form-control"/>
+            <br/>
+            <label for="reg-confirm-password">
+                Confirm Password
+            </label>
+            <input type="password" id="reg-confirm-password" required="required" ng-model="registerUser.confirmPassword" class="form-control"/>
+            <br/>
+            <label for="reg-name">
+                Name
+            </label>
+            <input type="text" id="reg-name" required="required" ng-model="registerUser.name" class="form-control"/>
+            <br/>
+            <label for="email">
+                E-mail
+            </label>
+            <input type="email" id="email" required="required" ng-model="registerUser.email" class="form-control"/>
+            <br/>
+            <label for="gender">
+                Gender
+            </label>
+            <input type="radio" ng-model="registerUser.gender" name="gender" value="0"/> Male
+            <input type="radio" ng-model="registerUser.gender" name="gender" value="1"/> Female
+            <input type="radio" ng-model="registerUser.gender" name="gender" value="2"/> Other
+            <br/>
+            <button class="btn-primary" ng-click="register(registerUser)">
+                Register
+            </button>
+        </form>
+    </div>
+</div>

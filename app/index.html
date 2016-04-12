@@ -1,0 +1,71 @@
+<html lang="en" ng-app="socialNetwork">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Social Network</title>
+    <meta name="description" content="SoftUni Social Network">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-controller="MainCtrl" cz-shortcut-listen="true">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#/" class="navbar-brand">Social Network</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul ng-if="isAuthenticated" class="nav navbar-nav">
+                <li>
+                    <a href="#/newsFeed">News Feed</a>
+                </li>
+                <li>
+                    <a href="#/friendRequests">Friend Requests</a>
+                </li>
+                <li>
+                    <a href="#/settings">Settings</a>
+                </li>
+                <li>
+                    <a href="#/changePassword">Change Password</a>
+                </li>
+                <li>
+                    <a href="#/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+   <div ng-view/>
+</div>
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/jquery/jquery-2.1.3.js"></script>
+<script src="lib/jquery.noty/jquery.noty.js"></script>
+<script src="lib/bootstrap/bootstrap-3.1.1.js"></script>
+<script src="lib/ui.bootstrap/ui.bootstrap.pagination-0.12.0.js"></script>
+
+
+<script src="app.js"></script>
+<script src="users/authentication.js"></script>
+<script src="news-feed/news-feed-controller.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+<script src="home/home-controller.js"></script>
+<script src="common/main-controller.js"></script>
+<script src="users/identity.js"></script>
+<script src="news-feed/news-feed-controller.js"></script>
+<script src="news-feed/feed.js"></script>
+</body>
+</html>
