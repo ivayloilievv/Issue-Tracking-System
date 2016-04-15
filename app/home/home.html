@@ -19,10 +19,10 @@
     </div>
     <div class="col-md-4 col-md-offset-2 border">
         <form name = "registerUserForm">
-            <label for="reg-username">
-                Username
+            <label for="email">
+                E-mail
             </label>
-            <input type="text" id="reg-username" required="required" ng-model="registerUser.username" class="form-control"/>
+            <input type="email" id="email" required="required" ng-model="registerUser.email" class="form-control"/>
             <br/>
             <label for="reg-password">
                 Password
@@ -33,23 +33,6 @@
                 Confirm Password
             </label>
             <input type="password" id="reg-confirm-password" required="required" ng-model="registerUser.confirmPassword" class="form-control"/>
-            <br/>
-            <label for="reg-name">
-                Name
-            </label>
-            <input type="text" id="reg-name" required="required" ng-model="registerUser.name" class="form-control"/>
-            <br/>
-            <label for="email">
-                E-mail
-            </label>
-            <input type="email" id="email" required="required" ng-model="registerUser.email" class="form-control"/>
-            <br/>
-            <label for="gender">
-                Gender
-            </label>
-            <input type="radio" ng-model="registerUser.gender" name="gender" value="0"/> Male
-            <input type="radio" ng-model="registerUser.gender" name="gender" value="1"/> Female
-            <input type="radio" ng-model="registerUser.gender" name="gender" value="2"/> Other
             <br/>
             <button class="btn-primary" ng-click="register(registerUser)">
                 Register

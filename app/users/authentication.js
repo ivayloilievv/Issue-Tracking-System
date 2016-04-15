@@ -9,7 +9,7 @@ angular.module('socialNetwork.users.authentication', [])
             function registerUser(user) {
                 var deferred = $q.defer();
 
-                $http.post(BASE_URL + 'users/Register', user)
+                $http.post(BASE_URL + 'Account/Register', user)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     },function(error) {
