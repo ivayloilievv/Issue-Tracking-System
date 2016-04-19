@@ -15,7 +15,12 @@ angular.module('socialNetwork.users.authentication', [])
                         deferred.resolve(response.data);
                     },function(error) {
 
-                    });
+                    }).then(function() {
+                        $http.post(BASE_URL + 'Token', {Username: 'ivaylo@abv.bg', Password: '1234567'})
+                            .then(function(response) {
+                                console.log(response);
+                            })
+                });
 
                 return deferred.promise;
             }
