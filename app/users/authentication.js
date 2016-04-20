@@ -9,18 +9,13 @@ angular.module('socialNetwork.users.authentication', [])
             function registerUser(user) {
                 var deferred = $q.defer();
 
+
                 $http.post(BASE_URL + 'Account/Register', user)
                     .then(function(response) {
-                        console.log(response);
                         deferred.resolve(response.data);
                     },function(error) {
 
-                    }).then(function() {
-                        $http.post(BASE_URL + 'Token', {Username: 'ivaylo@abv.bg', Password: '1234567'})
-                            .then(function(response) {
-                                console.log(response);
-                            })
-                });
+                    });
 
                 return deferred.promise;
             }
@@ -28,13 +23,20 @@ angular.module('socialNetwork.users.authentication', [])
             function  loginUser(user) {
                 var deferred = $q.defer();
 
-                $http.post(BASE_URL + 'Users/Login', user)
-                    .then(function(response) {
-                        deferred.resolve(response.data);
-                    },function(error) {
+                console.log(user.Password);
+                console.log(user.Username);
 
+                $http.post(BASE_URL + 'Token', "Username=" + encodeURIComponent(user.Username) +
+                        "&password=" + encodeURIComponent(user.Password) +
+                        "&grant_type=password",
+                    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
+                    .then(function(success){
+                        deferred.resolve(success.data);
+                    },function (err){
+                        deferred.reject(err);
                     });
-                        return deferred.promise;
+
+                return deferred.promise;
             }
 
             function  logout() {

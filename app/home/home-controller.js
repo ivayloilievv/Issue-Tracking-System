@@ -25,8 +25,14 @@ angular.module('socialNetwork.home', [
 
         $scope.register = function (user){
             authentication.registerUser(user)
-                .then(function(registeredUser) {
-                    console.log(registeredUser);
+                .then(function(Resultuser) {
+                    user.Username = user.Email;
+
+                    authentication.loginUser(user)
+                        .then(function(result){
+                            console.log(result);
+                        })
                 })
+
         };
     }])
