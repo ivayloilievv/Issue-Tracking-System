@@ -1,6 +1,6 @@
 
-angular.module('socialNetwork.common', [
-    'socialNetwork.users.identity'
+angular.module('issueTrackingSystem.common', [
+    'issueTrackingSystem.users.identity'
     ])
     .controller('MainCtrl', [
         '$scope',

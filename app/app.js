@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('socialNetwork', [
+angular.module('issueTrackingSystem', [
     'ngRoute',
-    'socialNetwork.home',
-    'socialNetwork.newsFeed',
-    'socialNetwork.common',
-    'socialNetwork.users.identity'
+    'issueTrackingSystem.home',
+    'issueTrackingSystem.common',
+    'issueTrackingSystem.users.identity',
+    'issueTrackingSystem.users.authentication'
   ]).
   config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider.otherwise({redirectTo: '#/'});
   }])
   .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/api/');

@@ -1,5 +1,5 @@
 
-angular.module('socialNetwork.users.authentication', [])
+angular.module('issueTrackingSystem.users.authentication', [])
     .factory('authentication', [
         '$http',
         '$q',

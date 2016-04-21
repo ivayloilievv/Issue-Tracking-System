@@ -1,5 +1,5 @@
 
-angular.module('socialNetwork.users.identity', [])
+angular.module('issueTrackingSystem.users.identity', [])
     .factory('identity', [function() {
 
         var accessToken = ' ';

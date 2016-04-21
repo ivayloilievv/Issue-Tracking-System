@@ -1,9 +1,9 @@
 
-angular.module('socialNetwork.home', [
-        'socialNetwork.users.authentication'
+angular.module('issueTrackingSystem.home', [
+        'issueTrackingSystem.users.authentication'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/', {
+        $routeProvider.when('#/', {
             templateUrl: 'home/home.html',
             controller: 'HomeCtrl'
         })
@@ -18,8 +18,6 @@ angular.module('socialNetwork.home', [
         $scope.login = function (user){
             authentication.loginUser(user)
                 .then(function(loggedInUser) {
-                    console.log(loggedInUser);
-                    $location.path('/news-feed');
                 })
         };
 
