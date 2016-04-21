@@ -3,7 +3,7 @@ angular.module('issueTrackingSystem.home', [
         'issueTrackingSystem.users.authentication'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('#/', {
+        $routeProvider.when('/', {
             templateUrl: 'home/home.html',
             controller: 'HomeCtrl'
         })
