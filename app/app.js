@@ -5,7 +5,8 @@ angular.module('issueTrackingSystem', [
     'issueTrackingSystem.home',
     'issueTrackingSystem.common',
     'issueTrackingSystem.users.identity',
-    'issueTrackingSystem.users.authentication'
+    'issueTrackingSystem.users.authentication',
+    'issueTrackingSystem.dashboard-controller'
   ]).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});

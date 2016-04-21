@@ -6,7 +6,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
         'BASE_URL',
         function($http, $q, BASE_URL){
 
-            function registerUser(user) {
+            function registerUser(user, success) {
                 var deferred = $q.defer();
 
 
@@ -20,7 +20,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
                 return deferred.promise;
             }
 
-            function  loginUser(user) {
+            function  loginUser(user, success) {
                 var deferred = $q.defer();
 
                 console.log(user.Password);
