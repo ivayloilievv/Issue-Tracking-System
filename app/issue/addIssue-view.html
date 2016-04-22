@@ -1,0 +1,52 @@
+<div>
+    <div class="bs-example bs-example-bg-classes">
+        <p class="bg-primary">Add Issue</p>
+    </div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-5">
+        <form name="AddIssue">
+            <div class="row">
+                <label for="Title">Title: </label>
+                <input type="text" id="Title" required="required" ng-model="Issue.Title">
+            </div>
+            <div class="row">
+                <label for="Description">Description: </label>
+                <input type="text" id="Description" required="required" ng-model="Issue.Description">
+            </div>
+            <div class="row">
+                <label for="Project">Project: </label>
+                <select id="Project"
+                        ng-options="option.Name for option in Projects track by option.Id"
+                        ng-model="Issue.Project" required="required">
+                </select>
+            </div>
+            <div class="row">
+                <label for="Assignee">Assignee: </label>
+                <select id="Assignee"
+                        ng-options="option.Username for option in Users track by option.Id"
+                        ng-model="Issue.Assignee" required="required">
+                </select>
+            </div>
+            <div class="row">
+                <label for="PriorityId">PriorityId: </label>
+                <select id="PriorityId"
+                        ng-options="option.Name for option in Issue.Project.Priorities track by option.Id"
+                        ng-model="Issue.Priority" required="required">
+                </select>
+            </div>
+            <div class="row">
+                <label for="Labels">Labels: </label>
+                <input type="text" ng-bind="loopData(Issue.Project.Labels)"  ng-model="Issue.Labels" required="required" >
+                {{Issue.Labels}}
+            </div>
+            <div class="row">
+                <label for="DueDate">DueDate: </label>
+                <input type="datetime-local" ng-model="Issue.DueDate" required="required">
+                </select>
+            </div>
+            <div class="row">
+                <input ng-click="Add(Issue)"  class="btn btn-success" type="button" value="Add Issue">
+            </div>
+        </form>
+    </div>
+</div>

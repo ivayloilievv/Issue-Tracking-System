@@ -1,0 +1,60 @@
+<div>
+    <div class="bs-example bs-example-bg-classes">
+        <p class="bg-primary">Issue Page</p>
+    </div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-6">
+        <div class="row">
+            <b>{{Issue.IssueKey}}</b>
+            <input  ng-click="Redirect('#/issue/' + Issue.Id + '/edit')" class="btn btn-success" ng-disabled="CurrentUserId!=Issue.Author.Id" type="button" value="Edit">
+        </div>
+        <div class="row">
+            <label for="Title">Title: </label>
+            <input type="text" id="Title" ng-model="Issue.Title">
+        </div>
+        <div class="row">
+            <label for="Description">Description: </label>
+            <input type="text" id="Name" ng-model="Issue.Description">
+        </div>
+        <div class="row">
+            <label for="AssigneeId">AssigneeId: </label>
+            (current id: {{Issue.Assignee.Id}})
+            <input type="text" id="AssigneeId" ng-model="Issue.Assignee.Username">
+        </div>
+        <div class="row">
+            <label for="PriorityId">PriorityId: </label>
+            (current id: {{Issue.Priority.Id}})
+            <input type="text" id="PriorityId" ng-model="Issue.Priority.Name">
+        </div>
+        <div class="row">
+            <label for="DueDate">DueDate: </label>
+            <input type="text" id="DueDate" ng-model="Issue.DueDate">
+        </div>
+        <div class="row">
+            <p>Author: {{Issue.Author.Username}}</p>
+        </div>
+        <div class="row">
+            <p>Project: {{Issue.Project.Name}}</p>
+        </div>
+        <div class="row">
+            <p>Status: {{Issue.Status.Name}}</p>
+        </div>
+        <div class="row">
+            <p>Labels: {{loopData(Issue.Labels)}}</p>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11">
+            <div class="row" ng-repeat="Comment in Comments">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{Comment.Author.Username}}</div>
+                    <div class="panel-body">
+                        {{Comment.Text}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

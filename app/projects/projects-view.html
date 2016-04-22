@@ -1,0 +1,59 @@
+
+<div ng-cloak>
+    <div class="bs-example bs-example-bg-classes">
+        <p class="bg-primary">Project Page</p>
+    </div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-5">
+        <div class="row">
+            <b>{{Project.ProjectKey}}</b>
+            <input  ng-click="Redirect('#/project/' + Project.Id + '/edit')" class="btn btn-success" ng-disabled="CurrentUserId!=Project.Lead.Id" type="button" value="Edit">
+            <input ng-click="Redirect('#/project/' + Project.Id + '/add-issue')" class="btn btn-success" ng-disabled="CurrentUserId!=Project.Lead.Id" type="button" value="Add Issue">
+        </div>
+        <div class="row">
+            <p>Project Key: {{Project.ProjectKey}}</p>
+        </div>
+        <div class="row">
+            <label for="Name">Name: </label>
+            <input type="text" id="Name" ng-model="Project.Name">
+        </div>
+        <div class="row">
+            <label for="Description">Description: </label>
+            <input type="text" id="Name" ng-model="Project.Description">
+        </div>
+        <div class="row">
+            <label for="LeadId">LeadId: </label>
+            (current id: {{Project.Lead.Id}})
+            <input type="text" id="LeadId " ng-model="Project.Lead.Username">
+        </div>
+        <div class="row">
+            <p>Labels: {{loopData(Project.Labels)}}</p>
+        </div>
+        <div class="row">
+            <p>Priorities: {{loopData(Project.Priorities)}}</p>
+        </div>
+    </div>
+    <div class="col-xs-5">
+        <div>
+            <table class="table" >
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Desthiption</th>
+                    <th>DueDate</th>
+                    <th>Assignee</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="Issue in Issues">
+                    <td><a ng-href="/#/issue/{{Issue.Id}}">{{Issue.Title}}</a></td>
+                    <td>{{Issue.Description}}</td>
+                    <td>{{Issue.DueDate}}</td>
+                    <td>{{Issue.Assignee.Username}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+    </div>
