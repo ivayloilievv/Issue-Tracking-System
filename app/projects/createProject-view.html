@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form name="CreateProjectForm">
+                <hr class="colorgraph">
+                <div class="form-group">
+                    <input type="text" name="Name" ng-model="ProjectUser.Name" required="required" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Description" ng-model="Project.Password" required="required" class="form-control input-lg" placeholder="Password" tabindex="5">
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12"><input type="submit" ng-disabled="CreateProjectForm.$invalid" value="CreateProject" ng-click="CreateProject(Project)" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
