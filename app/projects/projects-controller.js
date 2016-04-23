@@ -1,13 +1,13 @@
 
 'use strict';
 
-angular.module('issueTrackingSystem.controllers.project', [
+angular.module('issueTrackingSystem.projects', [
         'issueTrackingSystem.services.project',
         'issueTrackingSystem.services.auth'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/project/:id', {
-            templateUrl: 'app/templates/project.html',
+        $routeProvider.when('/projects', {
+            templateUrl: 'projects/allProject-view.html',
             controller: 'ProjectController'
         })
     }])

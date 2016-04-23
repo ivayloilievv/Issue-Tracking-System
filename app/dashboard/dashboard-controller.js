@@ -11,9 +11,10 @@ angular.module('issueTrackingSystem.dashboard-controller', [])
 
     .controller('DashboardController', [
         '$scope',
-        function DashboardController($scope){
-            $scope.redirect = function redirect() {
-
+        '$location',
+        function DashboardController($scope, $location){
+            $scope.redirect = function redirect($location) {
+                $location.path('/projects');
             }
         }
     ])
