@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('issueTrackingSystem.dashboard-controller', [])
+angular.module('issueTrackingSystem.dashboard-controller', [
+    'issueTrackingSystem.project-factory',
+    'issueTrackingSystem.issue-factory'
+])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/dashboard', {
@@ -12,21 +15,15 @@ angular.module('issueTrackingSystem.dashboard-controller', [])
     .controller('DashboardController', [
         '$scope',
         '$location',
-        function DashboardController($scope, $location){
-            $scope.redirect = function redirect($location) {
-                $location.path('/projects');
-            }
-        }
-    ])
-
-    .controller('DashboardController', [
-        '$scope',
         '$routeParams',
         'ProjectServices',
         'IssueServices',
-        function DashboardController($scope, $routeParams, ProjectServices, IssueServices) {
+        function DashboardController($scope, $location, $routeParams, ProjectServices, IssueServices) {
             var projectIdArray = [];
             var projects = [];
+            $scope.redirect = function redirect() {
+                $location.path('/projects');
+            }
             $scope.Projects = [];
             ProjectServices.GetAllProjects()
                 .then(function (success) {

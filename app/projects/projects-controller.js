@@ -3,7 +3,8 @@
 
 angular.module('issueTrackingSystem.projects-controller', [
         'issueTrackingSystem.project-factory',
-        'issueTrackingSystem.users.authentication'
+        'issueTrackingSystem.users.authentication',
+        'issueTrackingSystem.dashboard-controller'
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/projects', {
@@ -16,11 +17,11 @@ angular.module('issueTrackingSystem.projects-controller', [
         '$routeParams',
         '$window',
         'ProjectServices',
-        'AuthServices',
-        function ProjectController($scope, $routeParams, $window, ProjectServices, AuthServices) {
+        'authentication',
+        function ProjectController($scope, $routeParams, $window, ProjectServices, authentication) {
 
 
-            AuthServices.GetCurrentUser()
+            authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
                 });

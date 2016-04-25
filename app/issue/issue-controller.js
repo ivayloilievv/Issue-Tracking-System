@@ -17,9 +17,9 @@ angular.module('issueTrackingSystem.issue-controller', [
         '$routeParams',
         '$window',
         'IssueServices',
-        'AuthServices',
+        'authentication',
         'ProjectServices',
-        function IssueController($scope, $routeParams, $window, IssueServices, AuthServices, ProjectServices){
+        function IssueController($scope, $routeParams, $window, IssueServices, authentication, ProjectServices){
             IssueServices.GetIssueById($routeParams.id)
                 .then(function (success) {
                     $scope.Issue = success;
@@ -32,7 +32,7 @@ angular.module('issueTrackingSystem.issue-controller', [
                     console.log(error);
                 });
 
-            AuthServices.GetCurrentUser()
+            authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
                 });

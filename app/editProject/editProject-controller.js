@@ -16,8 +16,8 @@ angular.module('issueTrackingSystem.editProject-controller', [
         '$window',
         'ProjectServices',
         'IssueServices',
-        'AuthServices',
-        function EditProjectController($scope, $routeParams, $window, ProjectServices, IssueServices, AuthServices){
+        'authentication',
+        function EditProjectController($scope, $routeParams, $window, ProjectServices, IssueServices, authentication){
             AuthServices.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
