@@ -64,8 +64,6 @@ angular.module('issueTrackingSystem.home', [
 
 
             return {
-                Register: Register,
-                Login: Login,
                 GetCurrentUser: GetCurrentUser,
                 GetAllUsers: GetAllUsers
             }

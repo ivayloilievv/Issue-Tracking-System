@@ -1,5 +1,5 @@
 
-angular.module('issueTrackingSystem.services.project', [])
+angular.module('issueTrackingSystem.project-factory', [])
     .factory('ProjectServices', [
         '$http',
         '$q',

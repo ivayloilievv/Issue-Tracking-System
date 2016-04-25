@@ -1,10 +1,10 @@
 
 'use strict';
 
-angular.module('issueTrackingSystem.controllers.issue', [
-        'issueTrackingSystem.services.issue',
-        'issueTrackingSystem.services.auth',
-        'issueTrackingSystem.services.project'
+angular.module('issueTrackingSystem.issue-controller', [
+        'issueTrackingSystem.issue-factory',
+        'issueTrackingSystem.users.authentication',
+        'issueTrackingSystem.project-factory'
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/issue/:id', {
