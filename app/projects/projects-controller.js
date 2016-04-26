@@ -23,4 +23,6 @@ angular.module('issueTrackingSystem.allProjects-controller', [
             $scope.RedirectToProjectPage = function redirect(){
                 $location.path('/projects/:id');
             }
+
+
         }]);

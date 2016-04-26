@@ -1,0 +1,29 @@
+<div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-5">
+        <div class="row">
+            <label for="Name">Name: </label>
+            <input type="text" id="Name" ng-model="Project.Name">
+        </div>
+        <div class="row">
+            <label for="Description">Description: </label>
+            <input type="text" id="Description" ng-model="Project.Description">
+        </div>
+        <div class="row">
+            <label for="ProjectKey">ProjectKey: </label>
+            <input type="text" id="ProjectKey" ng-model="Project.ProjectKey">
+        </div>
+        <div class="row">
+            <label for="LeadId">LeadId: </label>
+            <input type="text" id="LeadId" ng-model="Lead.LeadId">
+        </div>
+        <div class="row">
+            <label for="Priorities">Priorities: </label>
+            <input id="Priorities" type="text" ng-model="Project.Priorities">
+        </div>
+        <br>
+        <div class="row">
+            <input ng-click="CreateProject(Project, Lead)" class="btn btn-success" type="button" value="Create Project">
+        </div>
+    </div>
+</div>

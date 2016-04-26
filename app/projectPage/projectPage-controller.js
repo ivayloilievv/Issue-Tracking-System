@@ -8,7 +8,7 @@ angular.module('issueTrackingSystem.projectPage-controller', [
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/projects/:id', {
-            templateUrl: 'projectPage/project-view.html',
+            templateUrl: 'projectPage/projectPage-view.html',
             controller: 'ProjectController'
         })
     }])
@@ -21,35 +21,32 @@ angular.module('issueTrackingSystem.projectPage-controller', [
         function ProjectController($scope, $routeParams, $window, ProjectServices, authentication) {
 
 
-            authentication.GetCurrentUser()
+            authentication.GetAllUsers()
                 .then(function (success) {
-                    $scope.CurrentUserId = success.Id;
-                });
+                    $scope.AllUsers = success;
+                }, function(error){
+                    console.log(error);
+                })
 
-            ProjectServices.GetProjectById($routeParams.id)
-                .then(function(success){
-                    $scope.Project = success;
-                    console.log(success);
-                });
+            $scope.CreateProject = function(Data, Lead){
+                var priorities = "";
+                priorities = Data.Priorities;
+                priorities = priorities.split(", ");
 
-            ProjectServices.GetIssuesByProjectId($routeParams.id)
-                .then(function(success){
-                    $scope.Issues = success;
-                });
-
-            $scope.Redirect = function (location) {
-                $window.location.href = location;
-            }
-
-            $scope.loopData = function (Data) {
-                var result = "";
-                if(Data != undefined){
-                    Data.forEach(function(element) {
-                        result+= element.Name + ', ';
-                    }, this);
+                var newPriorities= [];
+                for (var index = 0; index < priorities.length; index++) {
+                    newPriorities[index] = { Name: priorities[index]};
                 }
-                result = result.substr(0, result.length-2);
-                return result;
+
+                Data.LeadId = Lead.Id;
+                Data.Priorities = newPriorities;
+                ProjectServices.CreateProject(Data)
+                    .then(function (success) {
+                        notify('Project created');
+                    }, function (error) {
+                        console.log(error);
+                        notify(error.data.Message);
+                    })
             }
         }]
     );
