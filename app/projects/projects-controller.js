@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module('issueTrackingSystem.projects-controller', [
+angular.module('issueTrackingSystem.allProjects-controller', [
         'issueTrackingSystem.project-factory',
         'issueTrackingSystem.users.authentication',
         'issueTrackingSystem.dashboard-controller'
@@ -9,49 +9,18 @@ angular.module('issueTrackingSystem.projects-controller', [
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/projects', {
             templateUrl: 'projects/allProject-view.html',
-            controller: 'ProjectController'
+            controller: 'AllProjectsController'
         })
     }])
-    .controller('ProjectController', [
+    .controller('AllProjectsController', [
         '$scope',
+        '$location',
         '$routeParams',
         '$window',
         'ProjectServices',
         'authentication',
-        function ProjectController($scope, $routeParams, $window, ProjectServices, authentication) {
-
-
-            authentication.GetCurrentUser()
-                .then(function (success) {
-                    $scope.CurrentUserId = success.Id;
-                });
-
-            ProjectServices.GetProjectById($routeParams.id)
-                .then(function(success){
-                    $scope.Project = success;
-                    console.log(success);
-                });
-
-            ProjectServices.GetIssuesByProjectId($routeParams.id)
-                .then(function(success){
-                    $scope.Issues = success;
-                });
-
-            $scope.Redirect = function (location) {
-                $window.location.href = location;
+        function AllProjectsController($scope, $location, $routeParams, $window, ProjectServices, authentication) {
+            $scope.RedirectToProjectPage = function redirect(){
+                $location.path('/projects/:id');
             }
-
-            $scope.loopData = function (Data) {
-                var result = "";
-                if(Data != undefined){
-                    Data.forEach(function(element) {
-                        result+= element.Name + ', ';
-                    }, this);
-                }
-                result = result.substr(0, result.length-2);
-                return result;
-            }
-        }]
-    );
-
-
+        }]);
