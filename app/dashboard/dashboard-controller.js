@@ -3,8 +3,7 @@
 angular.module('issueTrackingSystem.dashboard-controller', [
     'issueTrackingSystem.project-factory',
     'issueTrackingSystem.issue-factory'
-])
-
+    ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/dashboard', {
             templateUrl: 'dashboard/dashboard-view.html',

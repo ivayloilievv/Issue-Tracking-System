@@ -22,14 +22,14 @@ angular.module('issueTrackingSystem.users.authentication', [])
             function  loginUser(user) {
                 var deferred = $q.defer();
 
-                console.log(user.Password);
-                console.log(user.Username);
-
                 $http.post(BASE_URL + 'Token', "Username=" + encodeURIComponent(user.Username) +
                         "&password=" + encodeURIComponent(user.Password) +
                         "&grant_type=password",
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
                     .then(function(success){
+                        sessionStorage['AccessToken'] = success.data.access_token;
+                        sessionStorage['CurrentUser'] = success.data.userName;
+                        sessionStorage['TokenType'] = success.data.token_type;
                         deferred.resolve(success.data);
                     },function (err){
                         deferred.reject(err);
@@ -43,6 +43,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
                 $http.get(BASE_URL + 'Users/me',
                     { headers: {'Authorization': sessionStorage['TokenType'] + " " + sessionStorage['AccessToken']}})
                     .then(function (result) {
+                        console.log(result);
                         deferred.resolve(result.data);
                     },function (err) {
                         deferred.reject(err);

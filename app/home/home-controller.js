@@ -19,6 +19,10 @@ angular.module('issueTrackingSystem.home', [
         $scope.login = function (user){
             authentication.loginUser(user)
                 .then(function(resultUser){
+                    authentication.getCurrentUser()
+                        .then(function(success){
+                            console.log(success);
+                        })
                     $location.path('/dashboard');
                 })
         };
