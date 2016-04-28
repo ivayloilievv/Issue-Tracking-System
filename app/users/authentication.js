@@ -10,7 +10,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
                 var deferred = $q.defer();
 
 
-                $http.post(BASE_URL + 'Account/Register', user)
+                $http.post(BASE_URL + 'api/' + 'Account/Register', user)
                     .then(function(response) {
                         deferred.resolve(response.data);
                     },function(error) {
@@ -22,7 +22,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
             function  loginUser(user) {
                 var deferred = $q.defer();
 
-                $http.post(BASE_URL + 'Token', "Username=" + encodeURIComponent(user.Username) +
+                $http.post(BASE_URL + 'api/' + 'Token', "Username=" + encodeURIComponent(user.Username) +
                         "&password=" + encodeURIComponent(user.Password) +
                         "&grant_type=password",
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
@@ -30,6 +30,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
                         sessionStorage['AccessToken'] = success.data.access_token;
                         sessionStorage['CurrentUser'] = success.data.userName;
                         sessionStorage['TokenType'] = success.data.token_type;
+                        console.log(sessionStorage.AccessToken);
                         deferred.resolve(success.data);
                     },function (err){
                         deferred.reject(err);
@@ -40,7 +41,7 @@ angular.module('issueTrackingSystem.users.authentication', [])
             function GetCurrentUser() {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Users/me',
+                $http.get(BASE_URL + 'users/me',
                     { headers: {'Authorization': sessionStorage['TokenType'] + " " + sessionStorage['AccessToken']}})
                     .then(function (result) {
                         console.log(result);

@@ -15,7 +15,10 @@
         </div>
         <div class="row">
             <label for="LeadId">LeadId: </label>
-            <input type="text" id="LeadId" ng-model="Lead.LeadId">
+            <select id="LeadId"
+                    ng-options="option.Username for option in AllUsers track by option.Id"
+                    ng-model="Lead">
+            </select>
         </div>
         <div class="row">
             <label for="Priorities">Priorities: </label>

@@ -29,6 +29,7 @@ angular.module('issueTrackingSystem.projectPage-controller', [
                 })
 
             $scope.CreateProject = function(Data, Lead){
+                console.log($scope.AllUsers);
                 var priorities = "";
                 priorities = Data.Priorities;
                 priorities = priorities.split(", ");

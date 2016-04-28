@@ -30,7 +30,6 @@ angular.module('issueTrackingSystem.dashboard-controller', [
                     projects = success;
                     projects = projects.filter(isCurrentUsersProject)
                     $scope.Projects = projects;
-                    console.log(success);
                 });
 
             function isCurrentUsersProject(element) {
