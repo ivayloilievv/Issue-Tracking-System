@@ -31,8 +31,8 @@ angular.module('issueTrackingSystem.allProjects-controller', [
                     console.log($scope.Projects);
                 });
 
-            $scope.Redirect = function (redirectTo) {
-                $location.path(redirectTo);
+            $scope.Redirect = function (loc) {
+                $location.path(loc);
             }
 
         }]);

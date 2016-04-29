@@ -5,7 +5,7 @@ angular.module('issueTrackingSystem.editProject-controller', [
         'issueTrackingSystem.users.authentication'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/project/:id/edit', {
+        $routeProvider.when('/projectssssss/', {
             templateUrl: 'app/templates/editProject.html',
             controller: 'EditProjectController'
         })
