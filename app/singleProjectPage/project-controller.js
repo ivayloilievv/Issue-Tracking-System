@@ -13,11 +13,12 @@ angular.module('issueTrackingSystem.project-controller', [
     }])
     .controller('ProjectController', [
         '$scope',
+        '$location',
         '$routeParams',
         '$window',
         'ProjectServices',
         'authentication',
-        function ProjectController($scope, $routeParams, $window, ProjectServices, authentication) {
+        function ProjectController($scope, $location, $routeParams, $window, ProjectServices, authentication) {
             authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
@@ -35,8 +36,9 @@ angular.module('issueTrackingSystem.project-controller', [
                     $scope.Issues = success;
                 });
 
-            $scope.Redirect = function (location) {
-                $window.location.href = location;
+            $scope.Redirect = function (loc) {
+                $location.path(loc);
+               // $window.location.href = location;
             }
 
             $scope.loopData = function (Data) {

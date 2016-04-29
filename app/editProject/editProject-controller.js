@@ -5,8 +5,8 @@ angular.module('issueTrackingSystem.editProject-controller', [
         'issueTrackingSystem.users.authentication'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/projectssssss/', {
-            templateUrl: 'app/templates/editProject.html',
+        $routeProvider.when('/project/:id/edit', {
+            templateUrl: 'editProject/editProjects-view.html',
             controller: 'EditProjectController'
         })
     }])
@@ -18,12 +18,12 @@ angular.module('issueTrackingSystem.editProject-controller', [
         'IssueServices',
         'authentication',
         function EditProjectController($scope, $routeParams, $window, ProjectServices, IssueServices, authentication){
-            AuthServices.GetCurrentUser()
+            authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
                 });
 
-            AuthServices.GetAllUsers()
+            authentication.GetAllUsers()
                 .then(function (success) {
                     $scope.AllUsers = success;
                 });

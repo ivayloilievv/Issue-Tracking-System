@@ -21,7 +21,7 @@ angular.module('issueTrackingSystem.allProjects-controller', [
             authentication.GetCurrentUser()
                 .then(function (success) {
                     if(!success.isAdmin){
-                        $location.path('/dashboard');
+                       // $location.path('/dashboard');
                     }
                 });
 

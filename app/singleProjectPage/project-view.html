@@ -6,7 +6,7 @@
     <div class="col-xs-5">
         <div class="row">
             <b>{{Project.ProjectKey}}</b>
-            <input  ng-click="Redirect('#/project/' + Project.Id + '/edit')" class="btn btn-success" ng-disabled="CurrentUserId!=Project.Lead.Id" type="button" value="Edit">
+            <input  ng-click="Redirect('/project/' + Project.Id + '/edit')" class="btn btn-success" ng-disabled="CurrentUserId!=Project.Lead.Id" type="button" value="Edit">
             <input ng-click="Redirect('#/project/' + Project.Id + '/add-issue')" class="btn btn-success" ng-disabled="CurrentUserId!=Project.Lead.Id" type="button" value="Add Issue">
         </div>
         <div class="row">
