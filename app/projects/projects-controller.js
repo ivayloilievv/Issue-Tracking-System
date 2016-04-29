@@ -3,8 +3,7 @@
 
 angular.module('issueTrackingSystem.allProjects-controller', [
         'issueTrackingSystem.project-factory',
-        'issueTrackingSystem.users.authentication',
-        'issueTrackingSystem.dashboard-controller'
+        'issueTrackingSystem.users.authentication'
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/projects', {
@@ -15,14 +14,25 @@ angular.module('issueTrackingSystem.allProjects-controller', [
     .controller('AllProjectsController', [
         '$scope',
         '$location',
-        '$routeParams',
-        '$window',
         'ProjectServices',
         'authentication',
-        function AllProjectsController($scope, $location, $routeParams, $window, ProjectServices, authentication) {
-            $scope.RedirectToProjectPage = function redirect(){
-                $location.path('/projects/:id');
-            }
+        function AllProjectsController($scope, $location, ProjectServices, authentication) {
 
+            authentication.GetCurrentUser()
+                .then(function (success) {
+                    if(!success.isAdmin){
+                        $location.path('/dashboard');
+                    }
+                });
+
+            ProjectServices.GetAllProjects()
+                .then(function (success) {
+                    $scope.Projects = success;
+                    console.log($scope.Projects);
+                });
+
+            $scope.Redirect = function (redirectTo) {
+                $location.path(redirectTo);
+            }
 
         }]);

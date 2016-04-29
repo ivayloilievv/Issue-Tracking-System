@@ -9,6 +9,7 @@ angular.module('issueTrackingSystem', [
     'issueTrackingSystem.dashboard-controller',
     'issueTrackingSystem.projectPage-controller',
     'issueTrackingSystem.editProject-controller',
+    'issueTrackingSystem.project-controller',
     'issueTrackingSystem.project-factory',
     'issueTrackingSystem.issue-factory',
     'issueTrackingSystem.issue-controller',

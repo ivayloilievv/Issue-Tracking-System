@@ -9,7 +9,7 @@ angular.module('issueTrackingSystem.issue-factory', [])
             function GetMyIssues(pageId) {
                 var deferred = $q.defer();
 
-                $http.get(BASE_URL + 'Issues/me?orderBy=Project.Name desc, IssueKey&pageSize=5&pageNumber=' + pageId,
+                $http.get(BASE_URL + 'Issues/me?orderBy=Project.Name desc, IssueKey&pageSize=5&pageNumber=' + 1,
                     { headers: {'Authorization': sessionStorage['TokenType'] + " " + sessionStorage['AccessToken']}})
                     .then(function (result) {
                         deferred.resolve(result.data);
