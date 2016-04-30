@@ -35,11 +35,13 @@ angular.module('issueTrackingSystem.issue-factory', [])
             }
 
             function PostIssue(Data) {
+                var deferred = $q.defer();
 
                 $http.post(BASE_URL + 'Issues', Data,
                     { headers: {'Authorization': sessionStorage['TokenType'] + " " + sessionStorage['AccessToken']}})
                     .then(function (result) {
                         deferred.resolve(result.data);
+                        console.log(result);
                     },function (err) {
                         deferred.reject(err);
                     })
