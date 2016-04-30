@@ -13,6 +13,7 @@ angular.module('issueTrackingSystem', [
     'issueTrackingSystem.project-factory',
     'issueTrackingSystem.issue-factory',
     'issueTrackingSystem.issue-controller',
+    'issueTrackingSystem.addIssue-controller',
     'issueTrackingSystem.allProjects-controller'
   ]).
   config(['$routeProvider', function($routeProvider) {

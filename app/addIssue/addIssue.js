@@ -1,14 +1,14 @@
 /**
  * Created by asus on 28.4.2016 г..
  */
-angular.module('issueTrackingSystem.controllers.addIssue', [
-        'issueTrackingSystem.services.issue',
-        'issueTrackingSystem.services.auth',
-        'issueTrackingSystem.services.project'
+angular.module('issueTrackingSystem.addIssue-controller', [
+        'issueTrackingSystem.issue-factory',
+        'issueTrackingSystem.users.authentication',
+        'issueTrackingSystem.project-factory'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/project/:id/add-issue', {
-            templateUrl: 'app/templates/addIssue.html',
+        $routeProvider.when('/issue/:id/add-issue', {
+            templateUrl: 'addIssue/addIssue-view.html',
             controller: 'AddIssueController'
         })
     }])
@@ -17,9 +17,9 @@ angular.module('issueTrackingSystem.controllers.addIssue', [
         '$routeParams',
         '$window',
         'IssueServices',
-        'AuthServices',
+        'authentication',
         'ProjectServices',
-        function AddIssueController($scope, $routeParams, $window, IssueServices, AuthServices, ProjectServices) {
+        function AddIssueController($scope, $routeParams, $window, IssueServices, authentication, ProjectServices) {
             $scope.Issue = {};
             ProjectServices.GetAllProjects()
                 .then(function (success) {
@@ -32,18 +32,18 @@ angular.module('issueTrackingSystem.controllers.addIssue', [
                     $scope.Issue.Labels = $scope.loopData($scope.Issue.Project.Labels);
                 });
 
-            AuthServices.GetCurrentUser()
+            authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.Issue.Assignee = success;
 
                 });
 
-            AuthServices.GetAllUsers()
+            authentication.GetAllUsers()
                 .then(function (success) {
                     $scope.Users = success;
                 });
 
-            AuthServices.GetCurrentUser()
+            authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
                 });
