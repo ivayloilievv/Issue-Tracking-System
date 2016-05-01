@@ -7,7 +7,7 @@
             <a>{{Project.Id}} {{Project.Name}}</a>
         </div>
     </div>
-    <div class="col-xs-6">
+    <div bn-route-demo class="col-xs-6">
         <div>
             <table class="table" >
                 <thead>
@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="Issue in Issues.Issues">
-                    <td><a ng-href="{{Issue.Id}}">{{Issue.Title}}</a></td>
+                    <td><a ng-href="#/issue/{{Issue.Id}}">{{Issue.Title}}</a></td>
                     <td>{{Issue.Description}}</td>
                     <td><a ng-href="{{Issue.Project.Id}}">{{Issue.Project.Name}}</a></td>
                     <td>{{Issue.DueDate}}</td>

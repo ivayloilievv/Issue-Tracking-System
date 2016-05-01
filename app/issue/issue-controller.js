@@ -8,7 +8,7 @@ angular.module('issueTrackingSystem.issue-controller', [
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/issue/:id', {
-            templateUrl: 'app/templates/issue.html',
+            templateUrl: 'issue/issue-view.html',
             controller: 'IssueController'
         })
     }])
@@ -16,10 +16,11 @@ angular.module('issueTrackingSystem.issue-controller', [
         '$scope',
         '$routeParams',
         '$window',
+        '$location',
         'IssueServices',
         'authentication',
         'ProjectServices',
-        function IssueController($scope, $routeParams, $window, IssueServices, authentication, ProjectServices){
+        function IssueController($scope, $routeParams, $window, $location, IssueServices, authentication, ProjectServices){
             IssueServices.GetIssueById($routeParams.id)
                 .then(function (success) {
                     $scope.Issue = success;
@@ -47,6 +48,12 @@ angular.module('issueTrackingSystem.issue-controller', [
                 result = result.substr(0, result.length-2);
                 return result;
             }
+
+            $scope.Redirect = function(loc) {
+                $location.path(loc);
+            }
+
+
         }]
     );
 

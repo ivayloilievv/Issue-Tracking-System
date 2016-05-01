@@ -1,14 +1,14 @@
 /**
  * Created by asus on 28.4.2016 г..
  */
-angular.module('issueTrackingSystem.controllers.editIssue', [
-        'issueTrackingSystem.services.issue',
-        'issueTrackingSystem.services.auth',
-        'issueTrackingSystem.services.project'
+angular.module('issueTrackingSystem.editIssue-controller', [
+        'issueTrackingSystem.issue-factory',
+        'issueTrackingSystem.users.authentication',
+        'issueTrackingSystem.project-factory'
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/issue/:id/edit', {
-            templateUrl: 'app/templates/editIssue.html',
+            templateUrl: 'editIssue/editIssue-view.html',
             controller: 'EditIssueController'
         })
     }])
@@ -17,10 +17,10 @@ angular.module('issueTrackingSystem.controllers.editIssue', [
         '$routeParams',
         '$window',
         'IssueServices',
-        'AuthServices',
+        'authentication',
         'ProjectServices',
-        function EditIssueController($scope, $routeParams, $window, IssueServices, AuthServices, ProjectServices){
-            AuthServices.GetCurrentUser()
+        function EditIssueController($scope, $routeParams, $window, IssueServices, authentication, ProjectServices){
+            authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUser = success;
                 }, function (error) {
@@ -54,7 +54,7 @@ angular.module('issueTrackingSystem.controllers.editIssue', [
                 return result;
             }
 
-            AuthServices.GetAllUsers()
+            authentication.GetAllUsers()
                 .then(function (success) {
                     $scope.Users = success;
                 })
