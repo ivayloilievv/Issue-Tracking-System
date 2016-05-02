@@ -4,7 +4,7 @@
         <h2>Dashboard</h2>
         <h3>Affiliated Projects</h3>
         <div ng-repeat="Project in Projects">
-            <a>{{Project.Id}} {{Project.Name}}</a>
+            <a ng-href="#/project/{{Project.Id}}">{{Project.Name}}</a>
         </div>
     </div>
     <div bn-route-demo class="col-xs-6">
