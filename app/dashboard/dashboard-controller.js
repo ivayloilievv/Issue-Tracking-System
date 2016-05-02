@@ -5,7 +5,7 @@ angular.module('issueTrackingSystem.dashboard-controller', [
     'issueTrackingSystem.issue-factory'
     ])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/dashboard', {
+        $routeProvider.when('/dashboard/:id', {
             templateUrl: 'dashboard/dashboard-view.html',
             controller: 'DashboardController'
         })

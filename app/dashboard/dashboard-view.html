@@ -22,7 +22,7 @@
                 <tr ng-repeat="Issue in Issues.Issues">
                     <td><a ng-href="#/issue/{{Issue.Id}}">{{Issue.Title}}</a></td>
                     <td>{{Issue.Description}}</td>
-                    <td><a ng-href="{{Issue.Project.Id}}">{{Issue.Project.Name}}</a></td>
+                    <td><a ng-href="#/project/{{Issue.Project.Id}}">{{Issue.Project.Name}}</a></td>
                     <td>{{Issue.DueDate}}</td>
                 </tr>
                 </tbody>

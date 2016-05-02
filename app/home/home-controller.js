@@ -19,7 +19,7 @@ angular.module('issueTrackingSystem.home', [
         $scope.login = function (user){
             authentication.loginUser(user)
                 .then(function(resultUser){
-                    $location.path('/dashboard');
+                    $location.path('/dashboard/1');
                 })
         };
 
@@ -30,7 +30,7 @@ angular.module('issueTrackingSystem.home', [
 
                     authentication.loginUser(user)
                         .then(function(resultUser){
-                            $location.path('/dashboard');
+                            $location.path('/dashboard/1');
                         })
                 })
                 .then(function(success) {
