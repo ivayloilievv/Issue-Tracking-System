@@ -4,23 +4,18 @@
 angular.module('issueTrackingSystem.projectPage-controller', [
         'issueTrackingSystem.project-factory',
         'issueTrackingSystem.users.authentication',
-        'issueTrackingSystem.dashboard-controller'
     ])
     .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/projects/:id', {
+        $routeProvider.when('/projects/add', {
             templateUrl: 'projectPage/projectPage-view.html',
-            controller: 'ProjectController'
+            controller: 'AddProjectController'
         })
     }])
-    .controller('ProjectController', [
+    .controller('AddProjectController', [
         '$scope',
-        '$routeParams',
-        '$window',
         'ProjectServices',
         'authentication',
-        function ProjectController($scope, $routeParams, $window, ProjectServices, authentication) {
-
-
+        function ProjectController($scope, ProjectServices, authentication) {
             authentication.GetAllUsers()
                 .then(function (success) {
                     $scope.AllUsers = success;
@@ -29,7 +24,6 @@ angular.module('issueTrackingSystem.projectPage-controller', [
                 })
 
             $scope.CreateProject = function(Data, Lead){
-                console.log($scope.AllUsers);
                 var priorities = "";
                 priorities = Data.Priorities;
                 priorities = priorities.split(", ");
@@ -49,7 +43,8 @@ angular.module('issueTrackingSystem.projectPage-controller', [
                         notify(error.data.Message);
                     })
             }
-        }]
-    );
+
+
+    }]);
 
 

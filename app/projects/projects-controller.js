@@ -20,6 +20,7 @@ angular.module('issueTrackingSystem.allProjects-controller', [
 
             authentication.GetCurrentUser()
                 .then(function (success) {
+                    $scope.CurrentUser = success;
                     if(!success.isAdmin){
                        // $location.path('/dashboard');
                     }
