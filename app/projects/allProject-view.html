@@ -1,7 +1,12 @@
+<div >
+    <p class="bg-primary">All Projects </p>
+</div>
+<div>
+    <input ng-click="Redirect('/projects/add' )" class="btn btn-success" type="button" value="Add Project">
+</div>
 <div class="panel panel-default">
     <div ng-repeat="Project in Projects" class="panel-body">
         <a ng-href="#/project/{{Project.Id}}">{{Project.Name}}</a>
         <input  ng-click="Redirect('/project/' + Project.Id )" class="btn btn-success" type="button" value="View">
-        <input ng-click="Redirect('/projects/add' )" class="btn btn-success" type="button" value="Project Page">
     </div>
 </div>

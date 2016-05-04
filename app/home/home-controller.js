@@ -16,10 +16,18 @@ angular.module('issueTrackingSystem.home', [
         'authentication',
         function($scope, $location, authentication){
 
+        $scope.redirect = function redirect() {
+            if(!(sessionStorage['AccessToken'] === "undefined")){
+                $location.path('/dashboard/1');
+            }
+        }
+
         $scope.login = function (user){
             authentication.loginUser(user)
                 .then(function(resultUser){
-                    $location.path('/dashboard/1');
+                    if(!(sessionStorage['AccessToken'] === "undefined")){
+                        $location.path('/dashboard/1');
+                    }
                 })
         };
 
@@ -30,7 +38,9 @@ angular.module('issueTrackingSystem.home', [
 
                     authentication.loginUser(user)
                         .then(function(resultUser){
-                            $location.path('/dashboard/1');
+                            if(!(sessionStorage['AccessToken'] === "undefined")){
+                                $location.path('/dashboard/1');
+                            }
                         })
                 })
                 .then(function(success) {
