@@ -1,6 +1,7 @@
 
 angular.module('issueTrackingSystem.home', [
-        'issueTrackingSystem.users.authentication'
+        'issueTrackingSystem.users.authentication',
+        'issueTrackingSystem.notify-factory'
     ])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/', {
@@ -14,7 +15,8 @@ angular.module('issueTrackingSystem.home', [
         '$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication){
+        'notifyService',
+        function($scope, $location, authentication, notifyService){
 
         $scope.redirect = function redirect() {
             if(!(sessionStorage['AccessToken'] === "undefined")){
@@ -24,8 +26,12 @@ angular.module('issueTrackingSystem.home', [
 
         $scope.login = function (user){
             authentication.loginUser(user)
+                .then(function(result) {
+                    notifyService.showInfo('Proba');
+                })
                 .then(function(resultUser){
                     if(!(sessionStorage['AccessToken'] === "undefined")){
+                        //notifyService.showInfo('Proba');
                         $location.path('/dashboard/1');
                     }
                 })
