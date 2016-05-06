@@ -27,7 +27,7 @@ angular.module('issueTrackingSystem.home', [
         $scope.login = function (user){
             authentication.loginUser(user)
                 .then(function(result) {
-                    notifyService.showInfo('Proba');
+                    notifyService.showInfo('Login success');
                 })
                 .then(function(resultUser){
                     if(!(sessionStorage['AccessToken'] === "undefined")){
@@ -39,6 +39,9 @@ angular.module('issueTrackingSystem.home', [
 
         $scope.register = function (user){
             authentication.registerUser(user)
+                .then(function(result) {
+                    notifyService.showInfo('Register success');
+                })
                 .then(function(Resultuser) {
                     user.Username = user.Email;
 

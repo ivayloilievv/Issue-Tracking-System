@@ -12,12 +12,13 @@ angular.module('issueTrackingSystem.editProject-controller', [
     }])
     .controller('EditProjectController', [
         '$scope',
+        '$location',
         '$routeParams',
         '$window',
         'ProjectServices',
         'IssueServices',
         'authentication',
-        function EditProjectController($scope, $routeParams, $window, ProjectServices, IssueServices, authentication){
+        function EditProjectController($scope, $location, $routeParams, $window, ProjectServices, IssueServices, authentication){
             authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUserId = success.Id;
@@ -72,6 +73,9 @@ angular.module('issueTrackingSystem.editProject-controller', [
                 newProject.Priorities = newPriorities;
                 newProject.Labels = newLabels;
                 ProjectServices.EditProjectById($routeParams.id, newProject)
+                    .then(function(success) {
+                        $location.path('/dashboard/1')
+                    })
                     .then(function (params) {
 
                     }, function (error) {
