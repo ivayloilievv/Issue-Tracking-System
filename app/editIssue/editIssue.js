@@ -14,12 +14,13 @@ angular.module('issueTrackingSystem.editIssue-controller', [
     }])
     .controller('EditIssueController', [
         '$scope',
+        '$location',
         '$routeParams',
         '$window',
         'IssueServices',
         'authentication',
         'ProjectServices',
-        function EditIssueController($scope, $routeParams, $window, IssueServices, authentication, ProjectServices){
+        function EditIssueController($scope, $location, $routeParams, $window, IssueServices, authentication, ProjectServices){
             authentication.GetCurrentUser()
                 .then(function (success) {
                     $scope.CurrentUser = success;
@@ -84,11 +85,15 @@ angular.module('issueTrackingSystem.editIssue-controller', [
                 }
 
                 IssueServices.EditIssue($routeParams.id, IssueForRequest)
+                    .then(function(success) {
+                        $location.path('/dashboard/1')
+                    })
                     .then(function (success) {
 
                     }, function (error) {
                         console.log(error);
                     });
+
             }
         }
     ]);

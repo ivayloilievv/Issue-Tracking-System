@@ -70,12 +70,13 @@ angular.module('issueTrackingSystem.controllers.addIssue', [
     }])
     .controller('AddIssueController', [
         '$scope',
+        '$location',
         '$routeParams',
         '$window',
         'IssueServices',
         'AuthServices',
         'ProjectServices',
-        function AddIssueController($scope, $routeParams, $window, IssueServices, AuthServices, ProjectServices) {
+        function AddIssueController($scope, $location, $routeParams, $window, IssueServices, AuthServices, ProjectServices) {
             $scope.Issue = {};
             ProjectServices.GetAllProjects()
                 .then(function (success) {
@@ -134,7 +135,10 @@ angular.module('issueTrackingSystem.controllers.addIssue', [
                     PriorityId: Issue.Priority.Id,
                     Labels: newLabels
                 };
-                IssueServices.PostIssue(IssueForRequest);
+                IssueServices.PostIssue(IssueForRequest)
+                    .then(function(success) {
+                        $location.path('/dashboard/1')
+                    });
             }
         }
     ]);

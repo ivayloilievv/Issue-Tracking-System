@@ -13,9 +13,10 @@ angular.module('issueTrackingSystem.projectPage-controller', [
     }])
     .controller('AddProjectController', [
         '$scope',
+        '$location',
         'ProjectServices',
         'authentication',
-        function ProjectController($scope, ProjectServices, authentication) {
+        function ProjectController($scope, $location, ProjectServices, authentication) {
             authentication.GetAllUsers()
                 .then(function (success) {
                     $scope.AllUsers = success;
@@ -42,6 +43,9 @@ angular.module('issueTrackingSystem.projectPage-controller', [
                         console.log(error);
                         notify(error.data.Message);
                     })
+                    .then(function(success) {
+                        $location.path('/dashboard/1')
+                    });
             }
 
 

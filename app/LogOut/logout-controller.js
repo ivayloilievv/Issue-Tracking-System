@@ -9,9 +9,11 @@ angular.module('issueTrackingSystem.logout-controller', [])
     .controller('LogoutController', [
         '$location',
         '$scope',
-        function LogoutController($location, $scope) {
+        'notifyService',
+        function LogoutController($location, $scope, notifyService) {
 
             $scope.logout = function logout(){
+                notifyService.showInfo('Logout success')
                 sessionStorage['AccessToken'] = undefined;
                 $location.path('/home');
             }
