@@ -43,7 +43,11 @@
             <p>Labels: {{loopData(Issue.Labels)}}</p>
         </div>
     </div>
-
+    <div class="col-xs-6">
+        <div ng-repeat="Status in Issue.AvailableStatuses">
+            ----{{Status.Name}}<input  ng-click="ChangeStatus(Status.Id)" class="btn btn-success" ng-disabled="CurrentUserId!=Issue.Author.Id && CurrentUserId!=Issue.Assignee.Id" type="button" value="Change">
+        </div>
+    </div>
     <div>
         <div class="col-xs-1"></div>
         <div class="col-xs-11">
@@ -56,5 +60,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-xs-6" ng-show="Issue.Author.Id==CurrentUserId||Issue.Assignee.Id==CurrentUserId">
+        <hr>
+        <label for="Comment">Text:</label>
+        <textarea name="" id="Comment" ng-model="Comment" cols="100" rows="5"></textarea>
+        <input class="btn btn-success" value="Add Comment" ng-click="AddComment(Comment)">
     </div>
 </div>
