@@ -20,7 +20,8 @@ angular.module('issueTrackingSystem.issue-controller', [
         'IssueServices',
         'authentication',
         'ProjectServices',
-        function IssueController($scope, $routeParams, $window, $location, IssueServices, authentication, ProjectServices){
+        'notifyService',
+        function IssueController($scope, $routeParams, $window, $location, IssueServices, authentication, ProjectServices, notifyService){
             IssueServices.GetIssueById($routeParams.id)
                 .then(function (success) {
                     $scope.Issue = success;
@@ -41,6 +42,12 @@ angular.module('issueTrackingSystem.issue-controller', [
 
             $scope.ChangeStatus = function (StatusId) {
                 IssueServices.ChangeStatus($routeParams.id, StatusId)
+                    .then(function (success) {
+                        notifyService.showInfo('Proba');
+                    }, function (error) {
+                        console.log(error);
+                        notifyService.showError(error.data.Message);
+                    });
             }
 
             $scope.AddComment = function (Comment) {

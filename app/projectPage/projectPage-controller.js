@@ -16,7 +16,8 @@ angular.module('issueTrackingSystem.projectPage-controller', [
         '$location',
         'ProjectServices',
         'authentication',
-        function ProjectController($scope, $location, ProjectServices, authentication) {
+        'notifyService',
+        function ProjectController($scope, $location, ProjectServices, authentication, notifyService) {
             authentication.GetAllUsers()
                 .then(function (success) {
                     $scope.AllUsers = success;
@@ -38,10 +39,10 @@ angular.module('issueTrackingSystem.projectPage-controller', [
                 Data.Priorities = newPriorities;
                 ProjectServices.CreateProject(Data)
                     .then(function (success) {
-                        notify('Project created');
+                        notifyService.showInfo('Project created');
                     }, function (error) {
                         console.log(error);
-                        notify(error.data.Message);
+                        notifyService.showError(error.data.Message);
                     })
                     .then(function(success) {
                         $location.path('/dashboard/1')

@@ -83,7 +83,7 @@ angular.module('issueTrackingSystem.issue-factory', [])
             function ChangeStatus(Id, StatusId) {
                 var deferred = $q.defer();
 
-                $http.put(BASE_URL + 'issues/' + Id + '/changestatus?statusid=' + StatusId,
+                $http.put(BASE_URL + 'issues/' + Id + '/changestatus?statusid=' + StatusId ,
                     { headers: {'Authorization': sessionStorage['TokenType'] + " " + sessionStorage['AccessToken']}})
                     .then(function (result) {
                         deferred.resolve(result.data);
