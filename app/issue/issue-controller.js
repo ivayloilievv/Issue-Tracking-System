@@ -46,6 +46,8 @@ angular.module('issueTrackingSystem.issue-controller', [
                         notifyService.showInfo('Proba');
                     }, function (error) {
                         console.log(error);
+                        console.log(sessionStorage['TokenType']);
+                        console.log(sessionStorage['AccessToken']);
                         notifyService.showError(error.data.Message);
                     });
             }
